@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: aqua;
+      }
+      .container {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+     
+      .card {
+        display: inline;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        color: black;
+        height: 10rem;
+        width: 42rem;
+        border-radius: 4px;
+        align-items: center;
+      }
+      .para {
+        margin: 0.7rem;
+
+        align-items: center;
+      }
+      .head {
+        margin: 0.3rem;
+
+        align-items: center;
+        font-size: rem;
+      }
+      .btn {
+        margin: 1.7rem;
+        align-items: center;
+        background-color: yellow;
+        color: black;
+        font-size: 18px;
+        border-radius: 12px;
+        border: 2px solid rgb(238, 8, 8);
+        cursor: pointer;
+        padding: 4px 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <p class="para">Best Jokes of The Day For You .👌</p>
+        <div id="joke" class="joke">
+           jokes are loading.......
+        </div>
+
+        <button class="btn">Next jokes</button>
+      </div>
+    </div>
+
+    <script>
+        // promise
+
+        // fetch(https://restcountries.eu/rest/v2/name/nepal)
+
+        // async await  es-8
+
+        //GET https://icanhazdadjoke.com/
+
+        const jokes = document.querySelector("#joke");
+
+        const jokeBtn = document.querySelector(".btn");
+
+        //  const genrateJokes=()=>{
+
+        //     const setHeader={
+        //         headers:{
+        //             Accept:"application/json"
+
+        //         }
+        //     }
+
+        //     fetch(' https://icanhazdadjoke.com/',setHeader)
+
+        //     .then((res)=>
+
+        //      res.json()
+
+        //     ).then((data)=>{
+
+        //         jokes.innerHTML=data.joke;
+
+        //     }).catch((error)=>{
+
+        //         console.error();})
+
+        //  }
+
+        // async await
+
+        const genrateJokes = async() => {
+
+
+          try{
+
+              const setHeader = {
+            headers: {
+              Accept: "application/json",
+            },
+          }
+
+
+       const res= await  fetch(" https://icanhazdadjoke.com/",setHeader);
+
+       const data  =await res.json();
+
+       jokes.innerHTML = data.joke;
+
+
+          }catch(err){
+              console.log(`the error is ${err}`)
+          }
+
+
+        }
+
+
+
+      //   async await
+
+
+        jokeBtn.addEventListener("click", genrateJokes);
+
+        genrateJokes();
+    </script>
+  </body>
+</html>
